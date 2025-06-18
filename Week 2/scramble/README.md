@@ -1,22 +1,19 @@
 # Scrabble
 
-This program simulates a simplified version of the Scrabble word game.
+Simulates a simplified version of the Scrabble word game.
 
-### 💡 How it works:
-- Prompts two players to input a word
-- Calculates the score for each word based on predefined letter values
-- Declares the winner (or tie)
+### 🧠 What it does:
+- Asks two players to input a word
+- Scores each word based on a points table (A–Z)
+- Declares the winner (or a tie)
 
-### 🧠 Concepts used:
-- Character arrays (strings)
-- ASCII manipulation
-- Conditionals & loops
-- Case-insensitive character handling
+### 🔍 Logic used:
+- Arrays (letter-to-score mapping)
+- ASCII index conversion
+- Input validation with `isalpha()`
+- Case-insensitive scoring
 
-### 📦 How to run:
-```bash
-make scrabble
-./scrabble
+### 🧪 Example:
 
 Player 1: CODE
 Player 2: QUIZ
