@@ -1,23 +1,18 @@
-## 📁 `readability/README.md`
-
-```markdown
 # Readability
 
-This program analyzes a block of text and determines its U.S. grade reading level using the **Coleman-Liau index**.
+Calculates the reading level of a block of text using the **Coleman-Liau index**.
 
-### 🧠 What it calculates:
-- Number of letters
-- Number of words
-- Number of sentences
-- Uses the formula:  
-  `index = 0.0588 * L - 0.296 * S - 15.8`
+### 🧠 What it does:
+- Counts letters, words and sentences
+- Applies formula to estimate U.S. grade level
+- Outputs something like: `Grade 5`, `Grade 16+`, or `Before Grade 1`
 
-Where:
-- `L` = average letters per 100 words
-- `S` = average sentences per 100 words
+### 🔍 Logic used:
+- String traversal
+- Conditionals with `isalpha()`, `isspace()`, and punctuation checks
+- Floating point math and rounding
 
-### 📦 How to run:
-```bash
-make readability
-./readability
+### 🧪 Example:
 
+Text: Congratulations! Today is your day.
+Output: Grade 3
