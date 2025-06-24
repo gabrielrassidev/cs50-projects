@@ -38,10 +38,12 @@ This week introduced core concepts of algorithms, particularly **searching** and
 - Handled invalid inputs and ties
 - Applied input validation and conditional logic
 
-### 🔜 `runoff.c` *(in progress / upcoming)*
-- Ranked-choice voting system
-- Requires handling elimination rounds, dynamic re-counting
-- Strong exercise in state management and iteration control
+### ✅ `tideman.c`
+- Ranked pairs voting system using the Tideman method
+- Required implementation of sorting, graph construction, and cycle detection
+- Balanced logic between preference strength and graph constraints
+- Core lesson: building logic trees that obey both rules and relationships
+- Advanced manipulation of arrays, structs, and custom conditions
 
 ---
 
@@ -50,6 +52,7 @@ This week introduced core concepts of algorithms, particularly **searching** and
 - Logic is only as good as the structure that supports it
 - Edge cases and input validation are as important as the main path
 - Efficiency matters early — not just when things scale
+- Sorting and logic alone aren't enough — structure must also prevent logical contradiction
 
 ---
 
