@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tx in history %}
+                <tr>
+                    <td>{{ tx.type.capitalize() }}</td>
+                    <td>{{ tx.symbol }}</td>
+                    <td>{{ tx.shares }}</td>
+                    <td>{{ tx.price | usd }}</td>
+                    <td>{{ tx.timestamp }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
