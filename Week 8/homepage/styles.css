@@ -1,0 +1,70 @@
+/* ========= BASE TAG SELECTORS ========= */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #111;
+}
+
+/* ========= NAVBAR CUSTOM ========= */
+.navbar {
+  padding: 1rem 1.5rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #333 !important;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #000 !important;
+}
+
+/* ========= CUSTOM CLASSES ========= */
+.section-dark {
+  background-color: #111;
+  color: #fff;
+}
+
+.btn-lg-custom {
+  padding: 0.8rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+/* ========= IMAGE UTILITIES ========= */
+.img-square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ========= FORM STYLES ========= */
+.form-control:focus {
+  border-color: #111;
+  box-shadow: none;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+/* ========= FOOTER ========= */
+footer p, footer a {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
