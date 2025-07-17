@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <title>Trivia!</title>
+
+    </head>
+    <body>
+        <button onclick="toggleDarkMode()" style="float: right; margin: 1rem;">🌙 Dark Mode</button>
+
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                    <p> What is the capital of Brazil?</p>
+                    <button>Rio de Janeiro</button>
+                    <button>Salvador</button>
+                    <button>Brasilia</button>
+                    <button>São Paulo</button>
+                    <button>Xique Xique-BA</button>
+                    <p id="feedback"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <p>Which country won more World Cups?</p>
+                <input type="text" id="free-response">
+                <button id="check-answer">Check</button>
+                <p id="free-feedback"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 3: True / False</h2>
+                <hr>
+                <p>Is the Amazon rainforest only in Brazil?</p>
+                <button class="tf">True</button>
+                <button class="tf">False</button>
+                <p id="tf-feedback"></p>
+            </div>
+        </div>
+
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
