@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎂 Birthdays App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition duration-300">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white py-6 shadow-md">
+        <div class="max-w-4xl mx-auto flex justify-between items-center px-4">
+            <h1 class="text-3xl font-semibold">🎂 Birthdays</h1>
+            <button id="dark-mode-toggle" class="text-2xl" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="max-w-4xl mx-auto px-4 py-8 space-y-8">
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded dark:bg-yellow-200 dark:text-yellow-800">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Form Section -->
+        <section class="bg-white dark:bg-gray-800 rounded shadow p-6">
+            <h2 class="text-xl font-semibold mb-4 text-indigo-600 dark:text-indigo-400">Add a Birthday</h2>
+            <form action="/" method="post" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label for="name" class="block font-medium mb-1">Name</label>
+                    <input type="text" name="name" id="name" required
+                           class="w-full border border-gray-300 rounded px-3 py-2 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                </div>
+                <div>
+                    <label for="month" class="block font-medium mb-1">Month</label>
+                    <input type="number" name="month" id="month" min="1" max="12" required
+                           class="w-full border border-gray-300 rounded px-3 py-2 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                </div>
+                <div>
+                    <label for="day" class="block font-medium mb-1">Day</label>
+                    <input type="number" name="day" id="day" min="1" max="31" required
+                           class="w-full border border-gray-300 rounded px-3 py-2 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                </div>
+                <div class="md:col-span-3">
+                    <button type="submit"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded dark:bg-indigo-500 dark:hover:bg-indigo-600">
+                        Add Birthday
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Table Section -->
+        <section class="bg-white dark:bg-gray-800 rounded shadow p-6">
+            <h2 class="text-xl font-semibold mb-4 text-indigo-600 dark:text-indigo-400">All Birthdays</h2>
+            <input type="text" id="search" placeholder="Search by name..."
+                class="mb-4 w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-100 dark:bg-gray-700">
+                        <tr>
+                            <th class="text-left px-4 py-2">Name</th>
+                            <th class="text-left px-4 py-2">Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                        {% if birthdays %}
+                            {% for b in birthdays %}
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <td class="px-4 py-2">{{ b.name }}</td>
+                                <td class="px-4 py-2">{{ b.month }}/{{ b.day }}</td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="2" class="px-4 py-4 text-center text-gray-500 dark:text-gray-400">
+                                    No birthdays yet. Add one above! 🎉
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-12 pb-6">
+        Built for CS50x — Powered by TailwindCSS
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        const toggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        function applyDarkMode(isDark) {
+            body.classList.toggle('dark', isDark);
+            toggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const mode = localStorage.getItem('darkMode');
+            applyDarkMode(mode === 'on');
+        });
+
+        toggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark');
+            applyDarkMode(isDark);
+        });
+
+        // Search filter
+        document.getElementById('search').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            document.querySelectorAll('tbody tr').forEach(row => {
+                const name = row.children[0].textContent.toLowerCase();
+                row.style.display = name.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>
